@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/a3brx/Studies/caal/classes/1-dynamic-programming/Tests/Partitioning.cpp
+Partitioning.h
+/home/a3brx/Studies/caal/classes/1-dynamic-programming/Tests/Partitioning.h
+vector
+-
+iostream
+-
+numeric
+-
+
+/home/a3brx/Studies/caal/classes/1-dynamic-programming/Tests/Partitioning.h
+
