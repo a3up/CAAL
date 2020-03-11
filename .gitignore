@@ -1,0 +1,7 @@
+# IDE's folders
+**/.idea
+**/cmake-build-debug
+
+# Project folder
+/proj
+

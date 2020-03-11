@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -Wall -Wshadow -Werror -Wno-error=dangling-else -DGTEST_HAS_PTH
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googlemock/include -I/home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googlemock -isystem /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest/include -isystem /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest 
+CXX_INCLUDES = -I/home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googlemock/include -I/home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googlemock -isystem /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest/include -isystem /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest 
 

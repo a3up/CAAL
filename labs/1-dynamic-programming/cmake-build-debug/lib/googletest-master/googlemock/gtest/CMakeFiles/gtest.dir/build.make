@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/a3brx/Studies/caal/classes/1-dynamic-programming
+CMAKE_SOURCE_DIR = /home/a3brx/Studies/caal/labs/1-dynamic-programming
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug
+CMAKE_BINARY_DIR = /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/depend.make
@@ -59,16 +59,16 @@ include lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/flags.make
 
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/flags.make
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: ../lib/googletest-master/googletest/src/gtest-all.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc
 
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gtest.dir/src/gtest-all.cc.i"
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc > CMakeFiles/gtest.dir/src/gtest-all.cc.i
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc > CMakeFiles/gtest.dir/src/gtest-all.cc.i
 
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gtest.dir/src/gtest-all.cc.s"
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc -o CMakeFiles/gtest.dir/src/gtest-all.cc.s
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest/src/gtest-all.cc -o CMakeFiles/gtest.dir/src/gtest-all.cc.s
 
 # Object files for target gtest
 gtest_OBJECTS = \
@@ -80,9 +80,9 @@ gtest_EXTERNAL_OBJECTS =
 lib/libgtestd.a: lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
 lib/libgtestd.a: lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build.make
 lib/libgtestd.a: lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../libgtestd.a"
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -P CMakeFiles/gtest.dir/cmake_clean_target.cmake
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gtest.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library ../../../libgtestd.a"
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -P CMakeFiles/gtest.dir/cmake_clean_target.cmake
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gtest.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build: lib/libgtestd.a
@@ -90,10 +90,10 @@ lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build: lib/libgtestd
 .PHONY : lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build
 
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/clean:
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -P CMakeFiles/gtest.dir/cmake_clean.cmake
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest && $(CMAKE_COMMAND) -P CMakeFiles/gtest.dir/cmake_clean.cmake
 .PHONY : lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/clean
 
 lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/depend:
-	cd /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/a3brx/Studies/caal/classes/1-dynamic-programming /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master/googletest /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest /home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/a3brx/Studies/caal/labs/1-dynamic-programming /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master/googletest /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest /home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/depend
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/a3brx/Studies/caal/classes/1-dynamic-programming/lib/googletest-master
+# Install script for directory: /home/a3brx/Studies/caal/labs/1-dynamic-programming/lib/googletest-master
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/a3brx/Studies/caal/classes/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/cmake_install.cmake")
+  include("/home/a3brx/Studies/caal/labs/1-dynamic-programming/cmake-build-debug/lib/googletest-master/googlemock/cmake_install.cmake")
 
 endif()
 
