@@ -12,18 +12,24 @@ using namespace std;
 
 class Point {
 public:
-	double x;
-	double y;
+    double x;
+    double y;
 
-	Point();
-	Point(double x, double y);
-	Point(int x, int y);
-	double distance(Point &p);
-	double distSquare(Point &p); // distance squared
-	virtual ~Point();
-	bool operator==(const Point &p) const;
+    Point();
+
+    Point(double x, double y);
+
+    Point(int x, int y);
+
+    double distance(Point &p);
+
+    double distSquare(Point &p); // distance squared
+    virtual ~Point();
+
+    bool operator==(const Point &p) const;
 };
-ostream& operator<<(ostream& os, Point &p);
+
+ostream &operator<<(ostream &os, Point &p);
 
 
 #endif /* POINT_H_ */

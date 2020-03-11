@@ -15,7 +15,7 @@ using testing::Eq;
 /**
  * Auxiliary function to read points from file to vector.
  */
-void readPoints(string in, vector<Point> &vp){
+void readPoints(string in, vector<Point> &vp) {
     ifstream is(in.c_str());
     vp.clear();
     if (!is)
@@ -23,7 +23,7 @@ void readPoints(string in, vector<Point> &vp){
     while (!is.eof()) {
         double x, y;
         is >> x >> y;
-        Point p(x,y);
+        Point p(x, y);
         vp.push_back(p);
     }
 }
@@ -32,12 +32,11 @@ void readPoints(string in, vector<Point> &vp){
  * Auxiliary functions to generate random sets of points.
  */
 
-void shuffle(vector<Point> &vp, int left, int right)
-{
+void shuffle(vector<Point> &vp, int left, int right) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, right - left +1);
-    for (int i = left; i < right; i++){
+    std::uniform_int_distribution<int> dis(0, right - left + 1);
+    for (int i = left; i < right; i++) {
         int k = i + dis(gen) % (right - i + 1);
         Point tmp = vp[i];
         vp[i] = vp[k];
@@ -45,12 +44,11 @@ void shuffle(vector<Point> &vp, int left, int right)
     }
 }
 
-void shuffleY(vector<Point> &vp, int left, int right)
-{
+void shuffleY(vector<Point> &vp, int left, int right) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, right - left +1);
-    for (int i = left; i < right; i++){
+    std::uniform_int_distribution<int> dis(0, right - left + 1);
+    for (int i = left; i < right; i++) {
         int k = i + dis(gen) % (right - i + 1);
         double tmp = vp[i].y;
         vp[i].y = vp[k].y;
@@ -62,27 +60,27 @@ void shuffleY(vector<Point> &vp, int left, int right)
 void generateRandom(int n, vector<Point> &vp) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, n-1);
+    std::uniform_int_distribution<int> dis(0, n - 1);
 
     vp.clear();
     // reference value for reference points (r, r), (r, r+1)
     int r = dis(gen);
-    vp.push_back(Point(r,r));
-    vp.push_back(Point(r,r+1));
+    vp.push_back(Point(r, r));
+    vp.push_back(Point(r, r + 1));
     for (int i = 2; i < n; i++)
         if (i < r)
             vp.push_back(Point(i, i));
         else
-            vp.push_back(Point(i+1, i+2));
-    shuffleY(vp, 2, n-1);
-    shuffle(vp, 0, n-1);
+            vp.push_back(Point(i + 1, i + 2));
+    shuffleY(vp, 2, n - 1);
+    shuffle(vp, 0, n - 1);
 }
 
 // Similar, but with constant X.
 void generateRandomConstX(int n, vector<Point> &vp) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dis(0, n-1);
+    std::uniform_int_distribution<int> dis(0, n - 1);
 
     vp.clear();
     // reference value for min dist
@@ -95,7 +93,7 @@ void generateRandomConstX(int n, vector<Point> &vp) {
         else
             y += 1 + dis(gen) % 100;
     }
-    shuffleY(vp, 0, n-1);
+    shuffleY(vp, 0, n - 1);
 }
 
 /**
@@ -106,26 +104,24 @@ void generateRandomConstX(int n, vector<Point> &vp) {
  * Use GetMilliSpan to correct for rollover
  */
 
-int GetMilliCount()
-{
+int GetMilliCount() {
     timeb tb;
-    ftime( &tb );
+    ftime(&tb);
     int nCount = tb.millitm + (tb.time & 0xfffff) * 1000;
     return nCount;
 }
 
-int GetMilliSpan(int nTimeStart)
-{
+int GetMilliSpan(int nTimeStart) {
     int nSpan = GetMilliCount() - nTimeStart;
     if (nSpan < 0)
         nSpan += 0x100000 * 1000;
     return nSpan;
 }
 
-int testNP(string name, vector<Point> & pontos, double dmin, NP_FUNC func, string alg) {
+int testNP(string name, vector<Point> &pontos, double dmin, NP_FUNC func, string alg) {
     int nTimeStart = GetMilliCount();
     Result res = (func)(pontos);
-    int nTimeElapsed = GetMilliSpan( nTimeStart );
+    int nTimeElapsed = GetMilliSpan(nTimeStart);
     cout << alg << "; " << name << "; " << nTimeElapsed << "; ";
     cout.precision(17);
     cout << res.dmin << "; " << res.p1 << "; " << res.p2 << endl;
@@ -163,9 +159,9 @@ int testNPRandConstX(int size, string name, double dmin, NP_FUNC func, string al
 void testNearestPoints(NP_FUNC func, string alg) {
     cout << "algorithm; data set; time elapsed (ms); distance; point1; point2" << endl;
     int maxTime = 10000;
-    if ( testNPFile("Pontos8", 11841.3, func, alg) > maxTime)
+    if (testNPFile("Pontos8", 11841.3, func, alg) > maxTime)
         return;
-    if ( testNPFile("Pontos64", 556.066, func, alg) > maxTime)
+    if (testNPFile("Pontos64", 556.066, func, alg) > maxTime)
         return;
     if (testNPFile("Pontos1k", 100.603, func, alg) > maxTime)
         return;
@@ -179,11 +175,11 @@ void testNearestPoints(NP_FUNC func, string alg) {
         return;
     if (testNPRand(0x40000, "Pontos256k", 1.0, func, alg) > maxTime)
         return;
-    if (testNPRand(0x80000, "Pontos512k",  1.0, func, alg) > maxTime)
+    if (testNPRand(0x80000, "Pontos512k", 1.0, func, alg) > maxTime)
         return;
-    if ( testNPRand(0x100000, "Pontos1M",  1.0, func, alg) > maxTime)
+    if (testNPRand(0x100000, "Pontos1M", 1.0, func, alg) > maxTime)
         return;
-    if ( testNPRand(0x200000, "Pontos2M",  1.0, func, alg) > maxTime)
+    if (testNPRand(0x200000, "Pontos2M", 1.0, func, alg) > maxTime)
         return;
     if (testNPRandConstX(0x8000, "Pontos32kConstX", 1.0, func, alg) > maxTime)
         return;
@@ -193,11 +189,11 @@ void testNearestPoints(NP_FUNC func, string alg) {
         return;
     if (testNPRandConstX(0x40000, "Pontos256kConstX", 1.0, func, alg) > maxTime)
         return;
-    if (testNPRandConstX(0x80000, "Pontos512kConstX",  1.0, func, alg) > maxTime)
+    if (testNPRandConstX(0x80000, "Pontos512kConstX", 1.0, func, alg) > maxTime)
         return;
-    if ( testNPRandConstX(0x100000, "Pontos1MConstX",  1.0, func, alg) > maxTime)
+    if (testNPRandConstX(0x100000, "Pontos1MConstX", 1.0, func, alg) > maxTime)
         return;
-    if ( testNPRandConstX(0x200000, "Pontos2MConstX",  1.0, func, alg) > maxTime)
+    if (testNPRandConstX(0x200000, "Pontos2MConstX", 1.0, func, alg) > maxTime)
         return;
 }
 
@@ -206,33 +202,25 @@ TEST(CAL_FP03, testNP_BF) {
     testNearestPoints(nearestPoints_BF, "Brute force");
 }
 
-
 TEST(CAL_FP03, testNP_BF_SortedX) {
     testNearestPoints(nearestPoints_BF_SortByX, "Brute force, sorted by x");
 }
 
-
 TEST(CAL_FP03, testNP_DC) {
     testNearestPoints(nearestPoints_DC, "Divide and conquer");
 }
-
 
 TEST(CAL_FP03, testNP_DC_2Threads) {
     setNumThreads(2);
     testNearestPoints(nearestPoints_DC_MT, "Divide and conquer with 2 threads");
 }
 
-
 TEST(CAL_FP03, testNP_DC_4Threads) {
     setNumThreads(4);
     testNearestPoints(nearestPoints_DC_MT, "Divide and conquer with 4 threads");
 }
 
-
 TEST(CAL_FP03, testNP_DC_8Threads) {
     setNumThreads(8);
     testNearestPoints(nearestPoints_DC_MT, "Divide and conquer with 8 threads");
 }
-
-
-
