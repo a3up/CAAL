@@ -34,7 +34,7 @@ class Vertex {
     bool removeEdgeTo(Vertex<T> *d);
 
 public:
-    Vertex(T in);
+    explicit Vertex(T in);
 
     friend class Graph<T>;
 };
@@ -200,7 +200,7 @@ bool Graph<T>::removeVertex(const T &in) {
             vertexSet.erase(iter);
             break;
         }
-    for(const auto &vertex : vertexSet)
+    for (const auto &vertex : vertexSet)
         vertex->removeEdgeTo(toRemove);
     return true;
 }
@@ -215,8 +215,12 @@ bool Graph<T>::removeVertex(const T &in) {
  */
 template<class T>
 vector<T> Graph<T>::dfs() const {
-    // TODO (7 lines)
     vector<T> res;
+    for (auto &vertex : this->vertexSet)
+        vertex->visited = false;
+    for (auto &vertex : this->vertexSet)
+        if (!vertex->visited)
+            dfsVisit(vertex, res);
     return res;
 }
 
@@ -226,7 +230,13 @@ vector<T> Graph<T>::dfs() const {
  */
 template<class T>
 void Graph<T>::dfsVisit(Vertex<T> *v, vector<T> &res) const {
-    // TODO (7 lines)
+    v->visited = true;
+    res.push_back(v->info);
+    for (auto &adjEdge : v->adj) {
+        auto adjVertex = adjEdge.dest;
+        if (!adjVertex->visited)
+            dfsVisit(adjVertex, res);
+    }
 }
 
 /****************** 2b) bfs ********************/
@@ -239,10 +249,29 @@ void Graph<T>::dfsVisit(Vertex<T> *v, vector<T> &res) const {
  */
 template<class T>
 vector<T> Graph<T>::bfs(const T &source) const {
-    // TODO (22 lines)
     // HINT: Use the flag "visited" to mark newly discovered vertices .
     // HINT: Use the "queue<>" class to temporarily store the vertices.
     vector<T> res;
+    auto s = findVertex(source);
+    if (s == NULL)
+        return res;
+    queue<Vertex<T> *> queue;
+    for (auto v : vertexSet)
+        v->visited = false;
+    queue.push(s);
+    s->visited = true;
+    while (!queue.empty()) {
+        auto vertex = queue.front();
+        queue.pop();
+        res.push_back(vertex->info);
+        for (auto &edge : vertex->adj) {
+            auto v = edge.dest;
+            if (!v->visited) {
+                queue.push(v);
+                v->visited = true;
+            }
+        }
+    }
     return res;
 }
 
@@ -257,8 +286,30 @@ vector<T> Graph<T>::bfs(const T &source) const {
 
 template<class T>
 vector<T> Graph<T>::topsort() const {
-    // TODO (26 lines)
+    for (auto &v : this->vertexSet)
+        v->indegree = 0;
+    for (auto &v : this->vertexSet)
+        for (auto &e : v->adj) {
+            auto w = e.dest;
+            w->indegree++;
+        }
+    queue<Vertex<T> *> c;
+    for (auto &v : this->vertexSet)
+        if (v->indegree == 0)
+            c.push(v);
     vector<T> res;
+    while (!c.empty()) {
+        auto v = c.front();
+        c.pop();
+        res.push_back(v->info);
+        for (auto &e : v->adj) {
+            auto w = e.dest;
+            if (--w->indegree == 0)
+                c.push(w);
+        }
+    }
+    if (res.size() != this->vertexSet.size())
+        res.clear();
     return res;
 }
 
@@ -274,8 +325,33 @@ vector<T> Graph<T>::topsort() const {
 
 template<class T>
 int Graph<T>::maxNewChildren(const T &source, T &inf) const {
-    // TODO (28 lines, mostly reused)
-    return 0;
+    auto s = findVertex(source);
+    if (s == NULL)
+        return 0;
+    queue<Vertex<T> *> queue;
+    for (auto v : vertexSet)
+        v->visited = false;
+    queue.push(s);
+    s->visited = true;
+    int res = -1;
+    while (!queue.empty()) {
+        int count = 0;
+        auto vertex = queue.front();
+        queue.pop();
+        for (auto &edge : vertex->adj) {
+            auto v = edge.dest;
+            if (!v->visited) {
+                queue.push(v);
+                v->visited = true;
+                count++;
+            }
+        }
+        if (count > res) {
+            res = count;
+            inf = vertex->info;
+        }
+    }
+    return res;
 }
 
 /****************** 3b) isDAG   (HOME WORK)  ********************/
@@ -290,8 +366,15 @@ int Graph<T>::maxNewChildren(const T &source, T &inf) const {
 
 template<class T>
 bool Graph<T>::isDAG() const {
-    // TODO (9 lines, mostly reused)
     // HINT: use the auxiliary field "processing" to mark the vertices in the stack.
+    for (auto &vertex : this->vertexSet) {
+        vertex->visited = false;
+        vertex->processing = false;
+    }
+    for (auto &vertex : this->vertexSet)
+        if (!vertex->visited)
+            if (!dfsIsDAG(vertex))
+                return false;
     return true;
 }
 
@@ -301,7 +384,17 @@ bool Graph<T>::isDAG() const {
  */
 template<class T>
 bool Graph<T>::dfsIsDAG(Vertex<T> *v) const {
-    // TODO (12 lines, mostly reused)
+    v->visited = true;
+    v->processing = true;
+    for (auto &adjEdge : v->adj) {
+        auto adjVertex = adjEdge.dest;
+        if (adjVertex->processing)
+            return false;
+        if (!adjVertex->visited)
+            if (!dfsIsDAG(adjVertex))
+                return false;
+    }
+    v->processing = false;
     return true;
 }
 
